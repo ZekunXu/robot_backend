@@ -64,21 +64,8 @@ ws.on("message", function incoming(data) {
     // fs.appendFileSync("./data.txt", "\n" + data, err => console.log(err));
 
     if (data != "ping"){
-        //将接收到的数据转换为 json ，存储到数据库中
 
-        // getModule(data).then(function(value){
-
-        //     var jsObj = {content: data, module: value};
-
-        //     return jsObj;
-
-        // }).then(function(value){
-
-        //     // new db(value).save().then(() => console.log("存储了一条数据"));
-        // }).catch((err)=>{
-        //     console.log("err:"+err);
-        // });
-        
+        // 和本地 mongo 建立连接，并将获取的数据转换为 JSON 并存入 robots 中。
         MongoClient.connect('mongodb://localhost/robot', (err, client)=>{
             if (err) throw err;
 
