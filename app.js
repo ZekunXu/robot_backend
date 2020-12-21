@@ -7,6 +7,9 @@ const http = require("http");
 const https = require("https");
 const fs = require("fs");
 const router = require("./router.js");
+const WebSocket = require("ws");
+const db = require("./lib/db/websocket_data.js");
+const MongoClient = require("mongodb").MongoClient;
 
 // http sever
 var http_server = http.createServer(app);
@@ -45,6 +48,58 @@ app.all("*",function(req,res,next){
         next();
 })
 
+// 建立 websocket 连接
+var ws = new WebSocket("ws://www.anbotcloud.com:8180/anbotwebsocket/1b8f1ebd1c88431a9a1f3b6d23229655/1.0.0", {perMessageDeflate: false});
+
+
+let getModule = async function(data){
+    var jsObj = JSON.parse(data);
+
+    return jsObj.module;
+}; 
+
+// 接受服务端发来的数据
+ws.on("message", function incoming(data) {
+    // 将接收到的信息存储到 file 中
+    // fs.appendFileSync("./data.txt", "\n" + data, err => console.log(err));
+
+    if (data != "ping"){
+        //将接收到的数据转换为 json ，存储到数据库中
+
+        // getModule(data).then(function(value){
+
+        //     var jsObj = {content: data, module: value};
+
+        //     return jsObj;
+
+        // }).then(function(value){
+
+        //     // new db(value).save().then(() => console.log("存储了一条数据"));
+        // }).catch((err)=>{
+        //     console.log("err:"+err);
+        // });
+        
+        MongoClient.connect('mongodb://localhost/robot', (err, client)=>{
+            if (err) throw err;
+
+            var JsObj = JSON.parse(data);
+            var db = client.db('robot');
+
+            db.collection('robots').insert(JsObj, (err, records)=>{
+                if (err) throw err;
+
+                console.log("存储了一条数据");
+            });
+        });
+
+    } else {
+        ws.send("pong");
+        console.log("回复了一条 pong");
+    }
+
+});
+
+
 
 
 app.get('/', (req, res, next) => {
@@ -52,7 +107,8 @@ app.get('/', (req, res, next) => {
 })
 
 
-// app.use(router);
+// 起用 路由
+app.use(router);
 
 
 

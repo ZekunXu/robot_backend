@@ -19,8 +19,11 @@
     "http": "0.0.1-security",
     "https": "^1.0.0",
     "moment": "^2.29.1",
+    "mongodb": "^3.6.3",
     "mongoose": "^5.11.8",
+    "nodejs-websocket": "^1.7.2",
     "request": "^2.88.2",
-    "socket.io": "^3.0.4"
+    "socket.io": "^3.0.4",
+    "ws": "^7.4.1"
   }
 }
