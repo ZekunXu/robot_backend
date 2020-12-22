@@ -7,6 +7,7 @@ const router = express.Router();
 router
 	.get('/api/robot/webcams', WebCamController.getAllUrls)
 	.post('/api/robot/webcams', WebCamController.getUrlByHardwareID)
+	.post('/api/robot/webcams/save', WebCamController.saveWebCam)
 
 
 module.exports = router;

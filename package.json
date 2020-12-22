@@ -22,6 +22,7 @@
     "mongodb": "^3.6.3",
     "mongoose": "^5.11.8",
     "nodejs-websocket": "^1.7.2",
+    "nodemon": "^2.0.6",
     "request": "^2.88.2",
     "socket.io": "^3.0.4",
     "ws": "^7.4.1"

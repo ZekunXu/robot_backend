@@ -48,43 +48,36 @@ app.all("*",function(req,res,next){
         next();
 })
 
-// 建立 websocket 连接
-var ws = new WebSocket("ws://www.anbotcloud.com:8180/anbotwebsocket/1b8f1ebd1c88431a9a1f3b6d23229655/1.0.0", {perMessageDeflate: false});
+// // 建立 websocket 连接
+// var ws = new WebSocket("ws://www.anbotcloud.com:8180/anbotwebsocket/1b8f1ebd1c88431a9a1f3b6d23229655/1.0.0", {perMessageDeflate: false});
 
+// // 接受服务端发来的数据
+// ws.on("message", function incoming(data) {
+//     // 将接收到的信息存储到 file 中
+//     // fs.appendFileSync("./data.txt", "\n" + data, err => console.log(err));
 
-let getModule = async function(data){
-    var jsObj = JSON.parse(data);
+//     if (data != "ping"){
 
-    return jsObj.module;
-}; 
+//         // 和本地 mongo 建立连接，并将获取的数据转换为 JSON 并存入 robots 中。
+//         MongoClient.connect('mongodb://localhost/robot', (err, client)=>{
+//             if (err) throw err;
 
-// 接受服务端发来的数据
-ws.on("message", function incoming(data) {
-    // 将接收到的信息存储到 file 中
-    // fs.appendFileSync("./data.txt", "\n" + data, err => console.log(err));
+//             var JsObj = JSON.parse(data);
+//             var db = client.db('robot');
 
-    if (data != "ping"){
+//             db.collection('robots').insert(JsObj, (err, records)=>{
+//                 if (err) throw err;
 
-        // 和本地 mongo 建立连接，并将获取的数据转换为 JSON 并存入 robots 中。
-        MongoClient.connect('mongodb://localhost/robot', (err, client)=>{
-            if (err) throw err;
+//                 console.log("存储了一条数据");
+//             });
+//         });
 
-            var JsObj = JSON.parse(data);
-            var db = client.db('robot');
+//     } else {
+//         ws.send("pong");
+//         console.log("回复了一条 pong");
+//     }
 
-            db.collection('robots').insert(JsObj, (err, records)=>{
-                if (err) throw err;
-
-                console.log("存储了一条数据");
-            });
-        });
-
-    } else {
-        ws.send("pong");
-        console.log("回复了一条 pong");
-    }
-
-});
+// });
 
 
 
