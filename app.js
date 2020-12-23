@@ -83,7 +83,7 @@ ws.on("message", function incoming(data) {
 
 
 app.get('/', (req, res, next) => {
-	res.send("Server Starting at port: 3000");
+	res.send("Server Starting at port: 3001");
 })
 
 
@@ -92,7 +92,7 @@ app.use(router);
 
 
 
-http_server.listen(3000, () =>{
-	console.log('App is running at port 3000.')
+http_server.listen(3001, () =>{
+	console.log('App is running at port 3001.')
 
 })
