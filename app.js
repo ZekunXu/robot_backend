@@ -10,7 +10,7 @@ const router = require("./router.js");
 const WebSocket = require("ws");
 const db = require("./lib/db/websocket_data.js");
 const MongoClient = require("mongodb").MongoClient;
-const getWWUrls = require("./component/getWWUrls.js");
+const getWWUrls = require("./lib/component/getWWUrls.js");
 
 // http sever
 var http_server = http.createServer(app);
