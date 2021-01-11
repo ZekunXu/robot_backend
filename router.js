@@ -1,5 +1,6 @@
 const WebCamController = require("./lib/controller/web_cam_controller.js");
 const SessionController = require("./lib/controller/session_controller.js");
+const InfraredController = require("./lib/controller/infrared_controller.js");
 
 const express = require("express");
 const router = express.Router();
@@ -20,6 +21,9 @@ router
 	.post('/api/robot/sessions/login', SessionController.login)
 	.get('/api/robot/sessions', SessionController.getAllSessions)
 	.post('/api/robot/sessions/token', SessionController.getSessionInfoByToken)
+
+router
+	.post('/api/robot/infrared/save', InfraredController.saveInfraredMsg)
 
 
 module.exports = router;
