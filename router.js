@@ -24,6 +24,7 @@ router
 
 router
 	.post('/api/robot/infrared/save', InfraredController.saveInfraredMsg)
+	.post('/api/robot/infrared/count/id', InfraredController.getCountById)
 
 
 module.exports = router;
