@@ -1,6 +1,8 @@
 const WebCamController = require("./lib/controller/web_cam_controller.js");
 const SessionController = require("./lib/controller/session_controller.js");
 const InfraredController = require("./lib/controller/infrared_controller.js");
+const WebsocketController = require("./lib/controller/websocket_controller.js");
+const RobotInfoController = require("./lib/controller/robot_info_controller.js");
 
 const express = require("express");
 const router = express.Router();
@@ -26,5 +28,12 @@ router
 	.post('/api/robot/infrared/save', InfraredController.saveInfraredMsg)
 	.post('/api/robot/infrared/count/id', InfraredController.getCountById)
 
+router
+	.post('/api/robot/websocket/get/function', WebsocketController.getOfflineMessage)
+
+router
+	.post('/api/robot/robotInfo/save', RobotInfoController.saveData)
+	.post('/api/robot/robotInfo/update', RobotInfoController.updateRobotStatus)
+	.post('/api/robot/robotInfo/smoke', RobotInfoController.updateSmokeInfo)
 
 module.exports = router;
