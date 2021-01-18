@@ -35,5 +35,7 @@ router
 	.post('/api/robot/robotInfo/save', RobotInfoController.saveData)
 	.post('/api/robot/robotInfo/update', RobotInfoController.updateRobotStatus)
 	.post('/api/robot/robotInfo/smoke', RobotInfoController.updateSmokeInfo)
+	.post('/api/robot/robotInfo/location', RobotInfoController.updateRobotLocation)
+	.post('/api/robot/robotInfo/get/robotStatus', RobotInfoController.getRobotStatusByID)
 
 module.exports = router;
