@@ -33,6 +33,7 @@ router
 
 router
 	.post('/api/robot/robotInfo/save', RobotInfoController.saveData)
+	.post('api/robot/robotInfo/onAndOff', RobotInfoController.updateOnlineOfflineById)
 	.post('/api/robot/robotInfo/update', RobotInfoController.updateRobotStatus)
 	.post('/api/robot/robotInfo/smoke', RobotInfoController.updateSmokeInfo)
 	.post('/api/robot/robotInfo/location', RobotInfoController.updateRobotLocation)
