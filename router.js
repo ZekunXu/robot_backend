@@ -3,6 +3,7 @@ const SessionController = require("./lib/controller/session_controller.js");
 const InfraredController = require("./lib/controller/infrared_controller.js");
 const WebsocketController = require("./lib/controller/websocket_controller.js");
 const RobotInfoController = require("./lib/controller/robot_info_controller.js");
+const EnvironmentController = require("./lib/controller/environment_controller.js");
 
 const express = require("express");
 const router = express.Router();
@@ -27,17 +28,25 @@ router
 router
 	.post('/api/robot/infrared/save', InfraredController.saveInfraredMsg)
 	.post('/api/robot/infrared/count/id', InfraredController.getCountById)
+	.get('/api/robot/infrared/getOne', InfraredController.getLatestMsg)
 
 router
 	.post('/api/robot/websocket/get/function', WebsocketController.getOfflineMessage)
 
 router
 	.post('/api/robot/robotInfo/save', RobotInfoController.saveData)
-	.post('api/robot/robotInfo/onAndOff', RobotInfoController.updateOnlineOfflineById)
+	.post('/api/robot/robotInfo/status', RobotInfoController.updateOnlineOfflineById)
 	.post('/api/robot/robotInfo/update', RobotInfoController.updateRobotStatus)
 	.post('/api/robot/robotInfo/smoke', RobotInfoController.updateSmokeInfo)
 	.post('/api/robot/robotInfo/location', RobotInfoController.updateRobotLocation)
 	.post('/api/robot/robotInfo/get/robotStatus', RobotInfoController.getRobotStatusByID)
 	.get('/api/robot/robotInfo/get', RobotInfoController.getAllRobotStatus)
+
+router
+	.post('/api/robot/environment/save', EnvironmentController.saveEnvironmentArea)
+	.post('/api/robot/environment/update/temperature', EnvironmentController.updateTemperature)
+	.post('/api/robot/environment/update/humidity', EnvironmentController.updateHumidity)
+
+
 
 module.exports = router;
