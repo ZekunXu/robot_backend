@@ -7,6 +7,16 @@ const EnvironmentController = require("./lib/controller/environment_controller.j
 
 const express = require("express");
 const router = express.Router();
+const rateLimit = require("express-rate-limit");
+
+/**
+ * 用来对特定的 api 做访问次数限制。
+ * 这个方法是用来限制红外设备的存储。
+ */
+const apiLimiter = rateLimit({
+	windowMs: 2 * 1000, // 2s
+	max: 1
+  });
 
 /**
  * 摄像头相关接口
@@ -26,7 +36,7 @@ router
 	.post('/api/robot/sessions/token', SessionController.getSessionInfoByToken)
 
 router
-	.post('/api/robot/infrared/save', InfraredController.saveInfraredMsg)
+	.post('/api/robot/infrared/save', apiLimiter, InfraredController.saveInfraredMsg)
 	.post('/api/robot/infrared/count/id', InfraredController.getCountById)
 	.get('/api/robot/infrared/getOne', InfraredController.getLatestMsg)
 	.post('/api/robot/infrared/get/count', InfraredController.getMsgByCount)
