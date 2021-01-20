@@ -29,6 +29,7 @@ router
 	.post('/api/robot/infrared/save', InfraredController.saveInfraredMsg)
 	.post('/api/robot/infrared/count/id', InfraredController.getCountById)
 	.get('/api/robot/infrared/getOne', InfraredController.getLatestMsg)
+	.post('/api/robot/infrared/get/count', InfraredController.getMsgByCount)
 
 router
 	.post('/api/robot/websocket/get/function', WebsocketController.getOfflineMessage)
