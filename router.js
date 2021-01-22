@@ -4,10 +4,22 @@ const InfraredController = require("./lib/controller/infrared_controller.js");
 const WebsocketController = require("./lib/controller/websocket_controller.js");
 const RobotInfoController = require("./lib/controller/robot_info_controller.js");
 const EnvironmentController = require("./lib/controller/environment_controller.js");
+const AppUpdateController = require("./lib/controller/app_update_controller.js");
 
 const express = require("express");
 const router = express.Router();
 const rateLimit = require("express-rate-limit");
+const multer = require("multer");
+
+const storage = multer.diskStorage({
+	destination: (req, file, cb) => {
+		cb(null, 'assets/uploads/');
+	},
+	filename: function (req, file, cb) {
+		cb(null, file.originalname);
+	}
+});
+const upload = multer({ storage: storage });
 
 /**
  * 用来对特定的 api 做访问次数限制。
@@ -57,6 +69,11 @@ router
 	.post('/api/robot/environment/save', EnvironmentController.saveEnvironmentArea)
 	.post('/api/robot/environment/update/temperature', EnvironmentController.updateTemperature)
 	.post('/api/robot/environment/update/humidity', EnvironmentController.updateHumidity)
+
+router
+	  .post('/api/robot/upload/app', upload.single("logo"), AppUpdateController.uploadApp)
+	  .post('/api/robot/upload/save', AppUpdateController.saveAppData)
+	  .get('/api/robot/download/appInfo', AppUpdateController.getAppInfo)
 
 
 

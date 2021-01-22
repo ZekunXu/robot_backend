@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Upload</title>
+</head>
+<body>
+    <form enctype="multipart/form-data">
+        <h2>运维平台上传</h2>
+        <input id="logo" type="file" name="logo">
+        <input type="button" onclick="upload()" value="提交">
+    </form>  
+
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function upload(){
+            var file = $('#logo').prop('files');
+            var data = new FormData();
+            data.append('logo', file[0]);
+            $.ajax({
+                type: "POST",
+                url: "/api/robot/upload/app",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (res) {
+
+                    var jsObj = JSON.parse(res);
+
+                    window.alert("存储成功！\n存储地址：" + jsObj.msg);
+                }
+            })
+        }
+    
+    </script>
+</body>
+</html>

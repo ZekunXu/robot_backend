@@ -31,6 +31,8 @@ app.use(session({
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.use('/assets',express.static(path.join(__dirname,'./assets/')));
+
 
 //设置跨域访问
 app.all("*",function(req,res,next){
@@ -53,6 +55,18 @@ app.all("*",function(req,res,next){
 
 app.get('/', (req, res, next) => {
 	res.send("Server Starting at port: 3001");
+})
+
+app.get('/upload', (req, res, next) => {
+  
+  fs.readFile('./lib/pages/upload_app.html', (err, data)=>{
+    if(err){
+      throw err;
+    }
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    res.end();
+  });
 })
 
 
