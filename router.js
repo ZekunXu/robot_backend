@@ -72,6 +72,7 @@ router
 
 router
 	  .post('/api/robot/upload/app', upload.single("logo"), AppUpdateController.uploadApp)
+	  .post('/api/robot/upload/update', AppUpdateController.updateAppInfo)
 	  .post('/api/robot/upload/save', AppUpdateController.saveAppData)
 	  .get('/api/robot/download/appInfo', AppUpdateController.getAppInfo)
 
