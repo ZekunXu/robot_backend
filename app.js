@@ -28,8 +28,10 @@ app.use(session({
 
 
 //配置post请求
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
+app.use(bodyParser.json({limit: '50mb'}));
+// app.use(express.json({limit: '50mb'}));
+// app.use(express.urlencoded({limit: '50mb'}));
 
 app.use('/assets',express.static(path.join(__dirname,'./assets/')));
 

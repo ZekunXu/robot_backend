@@ -5,6 +5,7 @@ const WebsocketController = require("./lib/controller/websocket_controller.js");
 const RobotInfoController = require("./lib/controller/robot_info_controller.js");
 const EnvironmentController = require("./lib/controller/environment_controller.js");
 const AppUpdateController = require("./lib/controller/app_update_controller.js");
+const ImageController = require("./lib/controller/image_controller.js");
 
 const express = require("express");
 const router = express.Router();
@@ -71,10 +72,13 @@ router
 	.post('/api/robot/environment/update/humidity', EnvironmentController.updateHumidity)
 
 router
-	  .post('/api/robot/upload/app', upload.single("logo"), AppUpdateController.uploadApp)
-	  .post('/api/robot/upload/update', AppUpdateController.updateAppInfo)
-	  .post('/api/robot/upload/save', AppUpdateController.saveAppData)
-	  .get('/api/robot/download/appInfo', AppUpdateController.getAppInfo)
+	.post('/api/robot/upload/app', upload.single("logo"), AppUpdateController.uploadApp)
+	.post('/api/robot/upload/update', AppUpdateController.updateAppInfo)
+	.post('/api/robot/upload/save', AppUpdateController.saveAppData)
+	.get('/api/robot/download/appInfo', AppUpdateController.getAppInfo)
+
+router
+  	.post('/api/robot/img/save',ImageController.saveBase64Img)
 
 
 
