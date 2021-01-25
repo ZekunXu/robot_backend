@@ -78,7 +78,9 @@ router
 	.get('/api/robot/download/appInfo', AppUpdateController.getAppInfo)
 
 router
-  	.post('/api/robot/img/save',ImageController.saveBase64Img)
+	  .post('/api/robot/img/save',ImageController.saveBase64Img)
+	  .post('/api/robot/img/update/imgType', ImageController.updateImgType)
+	  .post('/api/robot/img/get', ImageController.getImgeList)
 
 
 
