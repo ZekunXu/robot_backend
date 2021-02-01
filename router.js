@@ -50,6 +50,7 @@ router
 	.post('/api/robot/sessions/token', SessionController.getSessionInfoByToken)
 	.get('/api/robot/sessions/test', SessionController.sendNotification)
 	.get('/api/robot/sessions/get/jgRegisterId', SessionController.getAlljgRegisterId)
+	.post('/api/robot/sessions/delete', SessionController.deleteSessionByName)
 
 router
 	.post('/api/robot/infrared/save', apiLimiter, InfraredController.saveInfraredMsg)
