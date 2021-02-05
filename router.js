@@ -48,7 +48,6 @@ router
 	.post('/api/robot/sessions/login', SessionController.login)
 	.get('/api/robot/sessions', SessionController.getAllSessions)
 	.post('/api/robot/sessions/token', SessionController.getSessionInfoByToken)
-	.get('/api/robot/sessions/test', SessionController.sendNotification)
 	.get('/api/robot/sessions/get/jgRegisterId', SessionController.getAlljgRegisterId)
 	.post('/api/robot/sessions/delete', SessionController.deleteSessionByName)
 
