@@ -80,6 +80,7 @@ router
 	.post('/api/robot/upload/update', AppUpdateController.updateAppInfo)
 	.post('/api/robot/upload/save', AppUpdateController.saveAppData)
 	.get('/api/robot/download/appInfo', AppUpdateController.getAppInfo)
+	.get('/api/robot/download/xUpdate', AppUpdateController.getAppInfoByXUpdate)
 
 router
 	  .post('/api/robot/img/save',ImageController.saveBase64Img)
