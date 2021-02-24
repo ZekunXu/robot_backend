@@ -12,6 +12,7 @@ const db = require("./lib/db/websocket_data.js");
 const MongoClient = require("mongodb").MongoClient;
 const getWWUrls = require("./lib/component/getWWUrls.js");
 const checkInfraredStatus = require("./lib/component/checkInfraredStatus.js");
+const updateYingshiStatus = require("./lib/component/updateYingshiStatus.js");
 
 // http sever
 var http_server = http.createServer(app);
@@ -86,3 +87,4 @@ http_server.listen(3001, () =>{
 //启动定时更新 url 的任务
 getWWUrls.setInterval;
 checkInfraredStatus.setInterval;
+updateYingshiStatus.setInterval;
