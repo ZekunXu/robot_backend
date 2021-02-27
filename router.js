@@ -6,6 +6,7 @@ const RobotInfoController = require("./lib/controller/robot_info_controller.js")
 const EnvironmentController = require("./lib/controller/environment_controller.js");
 const AppUpdateController = require("./lib/controller/app_update_controller.js");
 const ImageController = require("./lib/controller/image_controller.js");
+const ProgramController = require("./lib/controller/program_controller.js");
 
 const express = require("express");
 const router = express.Router();
@@ -69,6 +70,7 @@ router
 	.post('/api/robot/robotInfo/location', RobotInfoController.updateRobotLocation)
 	.post('/api/robot/robotInfo/get/robotStatus', RobotInfoController.getRobotStatusByID)
 	.get('/api/robot/robotInfo/get', RobotInfoController.getAllRobotStatus)
+	.post('/api/robot/robotInfo/update/programCode', RobotInfoController.updateProgramCode)
 
 router
 	.post('/api/robot/environment/save', EnvironmentController.saveEnvironmentArea)
@@ -87,6 +89,9 @@ router
 	  .post('/api/robot/img/update/imgType', ImageController.updateImgType)
 	  .post('/api/robot/img/get', ImageController.getImgeList)
 
+router
+  	.post('/api/robot/program/save', ProgramController.saveProgramInfo)
+	  .get('/api/robot/program/get', ProgramController.getAllProgramInfo)
 
 
 module.exports = router;
