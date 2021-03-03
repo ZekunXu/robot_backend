@@ -8,6 +8,7 @@ const AppUpdateController = require("./lib/controller/app_update_controller.js")
 const ImageController = require("./lib/controller/image_controller.js");
 const ProgramController = require("./lib/controller/program_controller.js");
 const YingshiCamController = require("./lib/controller/yingshi_cam_controller");
+const HardwareMsgController = require("./lib/controller/hardware_msg_controller.js");
 
 const express = require("express");
 const router = express.Router();
@@ -97,6 +98,9 @@ router
 router
   	.post('/api/robot/yingshiCam/save', YingshiCamController.saveInfo)
 	.get('/api/robot/yingshiCam', YingshiCamController.getAllData)
+
+router
+  	.get('/api/robot/hardwareMsg', HardwareMsgController.getAllMsg)
 
 
 module.exports = router;

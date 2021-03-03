@@ -35,6 +35,8 @@ app.use(bodyParser.json({limit: '50mb'}));
 // app.use(express.json({limit: '50mb'}));
 // app.use(express.urlencoded({limit: '50mb'}));
 
+
+// 公共访问链接
 app.use('/assets',express.static(path.join(__dirname,'./assets/')));
 
 
