@@ -7,6 +7,7 @@ const EnvironmentController = require("./lib/controller/environment_controller.j
 const AppUpdateController = require("./lib/controller/app_update_controller.js");
 const ImageController = require("./lib/controller/image_controller.js");
 const ProgramController = require("./lib/controller/program_controller.js");
+const YingshiCamController = require("./lib/controller/yingshi_cam_controller");
 
 const express = require("express");
 const router = express.Router();
@@ -92,6 +93,10 @@ router
 router
   	.post('/api/robot/program/save', ProgramController.saveProgramInfo)
 	  .get('/api/robot/program/get', ProgramController.getAllProgramInfo)
+	
+router
+  	.post('/api/robot/yingshiCam/save', YingshiCamController.saveInfo)
+	.get('/api/robot/yingshiCam', YingshiCamController.getAllData)
 
 
 module.exports = router;

@@ -87,4 +87,4 @@ http_server.listen(3001, () =>{
 //启动定时更新 url 的任务
 getWWUrls.setInterval;
 checkInfraredStatus.setInterval;
-updateYingshiStatus.setInterval;
+// updateYingshiStatus.setInterval;
