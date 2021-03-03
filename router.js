@@ -100,7 +100,7 @@ router
 	.get('/api/robot/yingshiCam', YingshiCamController.getAllData)
 
 router
-  	.get('/api/robot/hardwareMsg', HardwareMsgController.getAllMsg)
+  	.post('/api/robot/hardwareMsg', HardwareMsgController.getAllMsg)
 
 
 module.exports = router;
