@@ -87,13 +87,15 @@ router
 	.get('/api/robot/download/xUpdate', AppUpdateController.getAppInfoByXUpdate)
 
 router
-	  .post('/api/robot/img/save',ImageController.saveBase64Img)
-	  .post('/api/robot/img/update/imgType', ImageController.updateImgType)
-	  .post('/api/robot/img/get', ImageController.getImgeList)
+	.post('/api/robot/img/save',ImageController.saveBase64Img)
+	.post('/api/robot/img/update/imgType', ImageController.updateImgType)
+	.post('/api/robot/img/get', ImageController.getImgeList)
 
 router
   	.post('/api/robot/program/save', ProgramController.saveProgramInfo)
-	  .get('/api/robot/program/get', ProgramController.getAllProgramInfo)
+	.get('/api/robot/program/get', ProgramController.getAllProgramInfo)
+	.post('/api/robot/program/update/programCode', ProgramController.updateProgramNameByCode)  
+	.post('/api/robot/program/get/programNameByhardwareID', ProgramController.getprogramNameByHardwareId)
 	
 router
   	.post('/api/robot/yingshiCam/save', YingshiCamController.saveInfo)
