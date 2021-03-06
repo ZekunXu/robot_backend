@@ -1,11 +1,5 @@
 
 
-function Test({a:a, b:b, c:c}) {
-    
+var abc = {a: 1, b: 2};
 
-    console.log("a: %s, b: %s, c: %s", a, b, c);
-
-}
-
-
-Test({a:1, c:3});
+console.log(JSON.stringify(abc));
