@@ -53,6 +53,7 @@ router
 	.post('/api/robot/sessions/token', SessionController.getSessionInfoByToken)
 	.get('/api/robot/sessions/get/jgRegisterId', SessionController.getAlljgRegisterId)
 	.post('/api/robot/sessions/delete', SessionController.deleteSessionByName)
+	.post('/api/robot/sessions/update/programCode', SessionController.updateProgramCodeByToken)
 
 router
 	.post('/api/robot/infrared/save', apiLimiter, InfraredController.saveInfraredMsg)
@@ -96,6 +97,7 @@ router
 	.get('/api/robot/program/get', ProgramController.getAllProgramInfo)
 	.post('/api/robot/program/update/programCode', ProgramController.updateProgramNameByCode)  
 	.post('/api/robot/program/get/programNameByhardwareID', ProgramController.getprogramNameByHardwareId)
+	.post('/api/robot/program/get/program', ProgramController.getProgramListByUserToken);
 	
 router
   	.post('/api/robot/yingshiCam/save', YingshiCamController.saveInfo)
