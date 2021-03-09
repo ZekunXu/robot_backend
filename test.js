@@ -1,69 +1,37 @@
+//固定设备页面相关接口
 
-// 弹窗接口
+//根据programCode和Type来返回对应的设备列表信息
+//是否要区分常用的列表和其他？
+
+//请求格式
 var json = {
-    "statusCode": "connected",
-    "msg": "success",
-    "param": [
-        {
-            "programName": "IFS 国金中心",
-            "programCode": "IFS",
-            "GPSLocation": {
-                "latitute": 20.0,
-                "longitude": 108.123
-            },
-            "devices": [
-                {
-                    "hardwareType": "wwwRobot",
-                    "hardwareName": "万维机器人",
-                    "count": 4
-                },
-                {
-                    "hardwareType": "HaikangWebCam",
-                    "hardwareName": "固定摄像头",
-                    "count": 20,
-                }
-            ]
-        },
-        {
-            "programName": "乔庄社区 56号",
-            "programCode": "QZSQ",
-            "GPSLocation": {
-                "latitute": 20.0,
-                "longitude": 108.123
-            },
-            "devices": [
-                {
-                    "hardwareType": "Robot",
-                    "hardwareName": "市井机器人",
-                    "count": 1
-                },
-                {
-                    "hardwareType": "HaikangWebCam",
-                    "hardwareName": "固定摄像头",
-                    "count": 20,
-                }
-            ]
-        },
-    ]
+    programCode: "IFS",
+    token: "999999",
+    type: "WebCam" //EDoor, Infrared... Stars(用户添加的常用设备)
 }
 
-
-//首页加载接口
-// request api
+//返回格式
 var json = {
-    "programCode": "IFS",
-}
-
-// response api
-var json = {
-    "statusCode": "",
-    "msg": "",
-    "param": [
+    statusCode: "connected",
+    msg: "success",
+    param: [
         {
-
+            hardwareType: "WebCam",
+            status: {
+                status: "online",
+                timestamp: 1211111
+            },
+            hardwareID: "28367WW",
+            name: "1楼窗户红外报警器",  
         },
         {
-            
-        }
+            hardwareType: "Infrared",
+            status: {
+                status: "online",
+                timestamp: 1211111
+            },
+            hardwareID: "28367WW",
+            name: "1楼窗户红外报警器",  
+        },
     ]
 }
