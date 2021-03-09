@@ -72,7 +72,7 @@ router
 	.post('/api/robot/robotInfo/smoke', RobotInfoController.updateSmokeInfo)
 	.post('/api/robot/robotInfo/location', RobotInfoController.updateRobotLocation)
 	.post('/api/robot/robotInfo/get/robotStatus', RobotInfoController.getRobotStatusByID)
-	.get('/api/robot/robotInfo/get', RobotInfoController.getAllRobotStatus)
+	.post('/api/robot/robotInfo/get', RobotInfoController.getAllRobotStatus)
 	.post('/api/robot/robotInfo/update/programCode', RobotInfoController.updateProgramCode)
 
 router
