@@ -9,6 +9,9 @@ const ImageController = require("./lib/controller/image_controller.js");
 const ProgramController = require("./lib/controller/program_controller.js");
 const YingshiCamController = require("./lib/controller/yingshi_cam_controller");
 const HardwareMsgController = require("./lib/controller/hardware_msg_controller.js");
+const DeviceInfoController = require("./lib/controller/device_controller.js");
+const OtherHardwareController = require("./lib/controller/other_hardwares_controller.js");
+const StaredDeviceListController = require("./lib/controller/stared_device_list_controller.js");
 
 const express = require("express");
 const router = express.Router();
@@ -105,6 +108,14 @@ router
 
 router
   	.post('/api/robot/hardwareMsg', HardwareMsgController.getAllMsg)
+
+router
+  	.post('/api/robot/device/save', DeviceInfoController.saveDeviceInfo)
+	.post('/api/robot/device/getDeviceList', OtherHardwareController.getDeviceList)
+
+router
+  	.post('/api/robot/staredDeviceList/save', StaredDeviceListController.saveData)
+	.post('/api/robot/staredDeviceList/get', StaredDeviceListController.getInfoByToken)
 
 
 module.exports = router;
