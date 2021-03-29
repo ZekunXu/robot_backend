@@ -112,6 +112,7 @@ router
 router
   	.post('/api/robot/device/save', DeviceInfoController.saveDeviceInfo)
 	.post('/api/robot/device/getDeviceList', OtherHardwareController.getDeviceList)
+	.post('/api/robot/device/update', DeviceInfoController.updateDeviceById)
 
 router
   	.post('/api/robot/staredDeviceList/save', StaredDeviceListController.saveData)
