@@ -1,37 +1,13 @@
-//固定设备页面相关接口
+var spawn = require("child_process").spawn;
 
-//根据programCode和Type来返回对应的设备列表信息
-//是否要区分常用的列表和其他？
+var py    = spawn('python', ['abc.py']);
+var data = [1,2,3,4,5,6,7,8,9];
+var dataString = '';
 
-//请求格式
-var json = {
-    programCode: "IFS",
-    token: "999999",
-    type: "WebCam" //EDoor, Infrared... Stars(用户添加的常用设备)
-}
+py.stdout.on('data', function(data){
+    console.log(data.toString())
+});
+py.stdout.on('end', function(){
+    console.log('hahahahah');
+});
 
-//返回格式
-var json = {
-    statusCode: "connected",
-    msg: "success",
-    param: [
-        {
-            hardwareType: "WebCam",
-            status: {
-                status: "online",
-                timestamp: 1211111
-            },
-            hardwareID: "28367WW",
-            name: "1楼窗户红外报警器",  
-        },
-        {
-            hardwareType: "Infrared",
-            status: {
-                status: "online",
-                timestamp: 1211111
-            },
-            hardwareID: "28367WW",
-            name: "1楼窗户红外报警器",  
-        },
-    ]
-}
