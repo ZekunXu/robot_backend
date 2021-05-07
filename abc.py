@@ -18,9 +18,12 @@ def main():
         # Shows the image in image viewer
         plt.imshow(crop_img)
         crop_img.save('0.png')
+        print('hello 2 2')
+        return 0
     except Exception as e:
         print(f'download image {img_url} error: {e}')
 
 #start process
 if __name__ == '__main__':
+    print('hello')
     main()
