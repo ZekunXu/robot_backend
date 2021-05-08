@@ -125,7 +125,7 @@ router
   	.get('/api/robot/test/hello', TestController.helloWorld)
 
 router
-  	.get('/api/robot/textMessage/callback', TextMessageController.codeCallback)
+  	.post('/api/robot/textMessage/callback', TextMessageController.codeCallback)
 
 
 module.exports = router;
