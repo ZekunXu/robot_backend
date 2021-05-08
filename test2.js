@@ -1,11 +1,5 @@
-var list = [];
+var abc = "hahahha";
 
-console.log(list);
+JSON.stringify(abc).replace(/"/g, "").replace(/\'/g, "\"");
 
-list.push(1);
-
-console.log(list);
-
-list.push(2);
-
-console.log(list);
+console.log(abc);

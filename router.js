@@ -12,6 +12,8 @@ const HardwareMsgController = require("./lib/controller/hardware_msg_controller.
 const DeviceInfoController = require("./lib/controller/device_controller.js");
 const OtherHardwareController = require("./lib/controller/other_hardwares_controller.js");
 const StaredDeviceListController = require("./lib/controller/stared_device_list_controller.js");
+const TestController = require("./lib/controller/test_controller.js");
+const TextMessageController = require("./lib/controller/text_message_controller.js")
 
 const express = require("express");
 const router = express.Router();
@@ -118,6 +120,12 @@ router
 router
   	.post('/api/robot/staredDeviceList/save', StaredDeviceListController.saveData)
 	.post('/api/robot/staredDeviceList/get', StaredDeviceListController.getInfoByToken)
+
+router
+  	.get('/api/robot/test/hello', TestController.helloWorld)
+
+router
+  	.get('/api/robot/textMessage/callback', TextMessageController.codeCallback)
 
 
 module.exports = router;
