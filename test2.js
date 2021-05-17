@@ -1,31 +1,14 @@
-const axios = require('axios');
-const GLOBAL_PARAM = require('./lib/global_param.js');
 
 
+let a = [];
 
+b = [1, 2];
+c = [3, 4];
 
+a = a.concat(b);
 
-async function abc () {
+console.log(a)
 
-    await axios.post(
-        "http://localhost:3000/api/updateDB/insert", 
-        {
-            "appName": "test",
-            "version": "1.0",
-            "build": -1
-        },
-        {
-            headers: {authorization: `Bearer ${GLOBAL_PARAM.BEARTOKEN_FOR_DB}`}
-        }
-    )
-    .then((value)=>{
-        console.log(value.data);
-    })
-    .catch((err)=>{
-        console.log(err);
-    })
+a = a.concat(b)
 
-
-}
-
-abc ();
+console.log(a)
