@@ -1,14 +1,17 @@
+const axios = require('axios');
+const fs = require('fs');
+const download = require('download');
 
 
-let a = [];
+Promise
+    .resolve()
+    .then(async ()=>{
 
-b = [1, 2];
-c = [3, 4];
+        const url = "https://wallpaperaccess.com/download/high-resolution-4k-508751";
+    
+        console.log('a');
 
-a = a.concat(b);
+        await download(url, 'file', {filename: 'abc.png'});
 
-console.log(a)
-
-a = a.concat(b)
-
-console.log(a)
+        console.log('b');
+    })
