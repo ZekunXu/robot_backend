@@ -11,7 +11,7 @@ Promise
     
         console.log('a');
 
-        await download(url, 'file', {filename: 'abc.png'});
+        await download(url, './file', {filename: 'abc.png'});
 
         console.log('b');
     })
