@@ -97,6 +97,9 @@ router
 	.post('/api/robot/img/update/imgType', ImageController.updateImgType)
 	.post('/api/robot/img/get', ImageController.getImgeList)
 	.post('/api/robot/img/avatar', ImageController.storeAvatarImg)
+	.post('/api/robot/img/order/img', ImageController.storeOrderIMImg)
+	.post('/api/robot/img/order/audio', ImageController.storeOrderIMAudio)
+	.post('/api/robot/img/order/video', ImageController.storeOrderIMVideo)
 
 router
   	.post('/api/robot/program/save', ProgramController.saveProgramInfo)
