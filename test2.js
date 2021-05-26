@@ -1,17 +1,13 @@
-const axios = require('axios');
-const fs = require('fs');
-const download = require('download');
+
+const stringCode = "/assets/img/wwRobot202104151701525626.png";
+
+let abc;
 
 
-Promise
-    .resolve()
-    .then(async ()=>{
+if( stringCode.startsWith('http:') ) {
 
-        const url = "https://wallpaperaccess.com/download/high-resolution-4k-508751";
-    
-        console.log('a');
+    abc = stringCode.slice(28);
 
-        await download(url, './file', {filename: 'abc.png'});
+}
 
-        console.log('b');
-    })
+console.log(abc);
