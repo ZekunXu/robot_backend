@@ -14,6 +14,7 @@ const OtherHardwareController = require("./lib/controller/other_hardwares_contro
 const StaredDeviceListController = require("./lib/controller/stared_device_list_controller.js");
 const TestController = require("./lib/controller/test_controller.js");
 const TextMessageController = require("./lib/controller/text_message_controller.js")
+const ID_GENERATION = require('./lib/component/ID_generation');
 
 const express = require("express");
 const router = express.Router();
@@ -28,7 +29,42 @@ const storage = multer.diskStorage({
 		cb(null, file.originalname);
 	}
 });
+
+
 const upload = multer({ storage: storage });
+
+const media = multer.diskStorage({
+	destination: (req, file, cb) => {
+
+		switch(req.body.msgType){
+			case "1":
+				cb(null, 'assets/order/imImg/');
+				break;
+			case "2":
+				cb(null, 'assets/order/imAudio/');
+				break;
+			case "3":
+				cb(null, 'assets/order/imVideo/');
+				break;
+		}
+	},
+	filename: (req, file, cb) => {
+
+		switch(req.body.msgType){
+			case "1":
+				cb(null, `${ID_GENERATION.getNewID()}.png`);
+				break;
+			case "2":
+				cb(null, `${ID_GENERATION.getNewID()}.mp3`);
+				break;
+			case "3":
+				cb(null, `${ID_GENERATION.getNewID()}.mp4`);
+				break;
+		}
+	}
+});
+
+const mediaUpload = multer({storage: media});
 
 /**
  * 用来对特定的 api 做访问次数限制。
@@ -100,6 +136,7 @@ router
 	.post('/api/robot/img/order/img', ImageController.storeOrderIMImg)
 	.post('/api/robot/img/order/audio', ImageController.storeOrderIMAudio)
 	.post('/api/robot/img/order/video', ImageController.storeOrderIMVideo)
+	.get('/api/robot/img/data', mediaUpload.single('file') , ImageController.saveFormData)
 
 router
   	.post('/api/robot/program/save', ProgramController.saveProgramInfo)
