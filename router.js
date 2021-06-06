@@ -36,7 +36,7 @@ const upload = multer({ storage: storage });
 const media = multer.diskStorage({
 	destination: (req, file, cb) => {
 
-		switch(req.body.msgType){
+		switch(req.body.IMType){
 			case "1":
 				cb(null, 'assets/order/imImg/');
 				break;
@@ -50,7 +50,7 @@ const media = multer.diskStorage({
 	},
 	filename: (req, file, cb) => {
 
-		switch(req.body.msgType){
+		switch(req.body.IMType){
 			case "1":
 				cb(null, `${ID_GENERATION.getNewID()}.png`);
 				break;
@@ -136,7 +136,7 @@ router
 	.post('/api/robot/img/order/img', ImageController.storeOrderIMImg)
 	.post('/api/robot/img/order/audio', ImageController.storeOrderIMAudio)
 	.post('/api/robot/img/order/video', ImageController.storeOrderIMVideo)
-	.get('/api/robot/img/data', mediaUpload.single('file') , ImageController.saveFormData)
+	.post('/api/robot/img/data', mediaUpload.single('file') , ImageController.saveFormData)
 
 router
   	.post('/api/robot/program/save', ProgramController.saveProgramInfo)
