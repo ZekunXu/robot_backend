@@ -41,10 +41,10 @@ const media = multer.diskStorage({
 				cb(null, 'assets/order/imImg/');
 				break;
 			case "2":
-				cb(null, 'assets/order/imAudio/');
+				cb(null, 'assets/order/imVideo/');
 				break;
 			case "3":
-				cb(null, 'assets/order/imVideo/');
+				cb(null, 'assets/order/imAudio/');
 				break;
 		}
 	},
@@ -55,10 +55,10 @@ const media = multer.diskStorage({
 				cb(null, `${ID_GENERATION.getNewID()}.png`);
 				break;
 			case "2":
-				cb(null, `${ID_GENERATION.getNewID()}.mp3`);
+				cb(null, `${ID_GENERATION.getNewID()}.mp4`);
 				break;
 			case "3":
-				cb(null, `${ID_GENERATION.getNewID()}.mp4`);
+				cb(null, `${ID_GENERATION.getNewID()}.mp3`);
 				break;
 		}
 	}
