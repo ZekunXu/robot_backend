@@ -61,6 +61,9 @@ const media = multer.diskStorage({
 				cb(null, `${ID_GENERATION.getNewID()}.mp3`);
 				break;
 		}
+	},
+	limits: {
+		fieldSize: 500 * 1024 * 1024
 	}
 });
 
