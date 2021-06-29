@@ -31,10 +31,10 @@ app.use(session({
 
 
 //配置post请求
-app.use(bodyParser.urlencoded({extended: true, limit: '1000mb'}));
-app.use(bodyParser.json({limit: '1000mb'}));
-// app.use(express.json({limit: '50mb'}));
-// app.use(express.urlencoded({limit: '50mb'}));
+// app.use(bodyParser.urlencoded({extended: true, limit: '1000mb'}));
+// app.use(bodyParser.json({limit: '1000mb'}));
+app.use(express.json({limit: '500mb'}));
+app.use(express.urlencoded({limit: '500mb'}));
 
 
 // 公共访问链接
