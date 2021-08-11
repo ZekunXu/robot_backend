@@ -1,10 +1,6 @@
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
-const myPlaintextPassword = 's0/\/\P4$$w0rD';
-const someOtherPlaintextPassword = 'not_bacon';
+const SessionDB = require('./lib/db/session');
 
-bcrypt.genSalt(saltRounds, function(err, salt) {
-  bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
-      console.log(hash);
-  });
-});
+
+const result = SessionDB.find({}, { jgRegisterId: 1 , level: {$lte: 1}, programCode: {$in: ["IFS"]}});
+
+console.log(result);
